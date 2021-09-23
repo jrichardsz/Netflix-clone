@@ -66,3 +66,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## TODO :computer:
 
 :pushpin: Implement LogIn and Register session <br>
+
+## Variables
+
+export REACT_APP_MEDIA_API_BASE_URL=http://192.168.0.22:8081

@@ -1,3 +1,4 @@
+import OnInit from './components/OnInit.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

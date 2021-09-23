@@ -25,6 +25,34 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   <title>Netflix</title>
+  <script>
+
+
+  function getLocationBasePath() {
+    if (typeof window === "undefined") {
+      console.error("ReferenceError: window is not defined. Are you in frontend javascript layer?");
+      return;
+    }
+
+    if (typeof window.location === "undefined") {
+      console.error("ReferenceError: window.location is not defined. Are you in frontend javascript layer?");
+      return;
+    }
+
+    if(window.location.port){
+      return window.location.protocol+"//"+window.location.hostname+":"+window.location.port
+    }else {
+      return window.location.protocol+"//"+window.location.hostname
+    }
+  }
+  var baseDomain = getLocationBasePath();
+  if(!baseDomain.includes("localhost")){
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", getLocationBasePath()+"/settings", false ); // false for synchronous request
+    xmlHttp.send( null );
+    global.settings = JSON.parse(xmlHttp.responseText);
+  }
+  </script>  
 </head>
 
 <body>

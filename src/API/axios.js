@@ -1,8 +1,7 @@
 import axios from "axios";
 
-//THIS IS THE BASE OF THE URL
 const instance = axios.create({
-    baseURL : "https://api.themoviedb.org/3"
+    baseURL : global.settings.MEDIA_API_BASE_URL
 });
 
 export default instance;

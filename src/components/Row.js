@@ -14,12 +14,13 @@ const Row= ({title,fetchUrl,isLargeRow,id})=> {
     //A snippet of code which runs based on a specific condition/variable
     useEffect(()=>{
 
-        //if [], run once when the row loads, and dont run again 
+        //if [], run once when the row loads, and dont run again
 
         async function fetchData(){
             //Dont move until we get the API answer
             const request = await axios.get(fetchUrl);
             // GET REQUEST  = "https://api.themoviedb.org/3/fetchUrl"
+            // console.log(JSON.stringify([request.data.results[0], request.data.results[1], request.data.results[2]]));
             setMovies(request.data.results)
             return request;
         }
@@ -37,8 +38,8 @@ const Row= ({title,fetchUrl,isLargeRow,id})=> {
         <section className="row">
             {/** TITLE */}
             <h2>{title}</h2>
-            <div class="slider">
-     
+            <div className="slider">
+
                 <div className="slider__arrow-left" ><span className="arrow" onClick={()=>{document.getElementById(id).scrollLeft-=(window.innerWidth-80)}}><ArrowBackIosIcon/></span></div>
                 <div id={id} className="row__posters">
                     {/**SEVERAL ROW__POSTER */}
@@ -46,12 +47,12 @@ const Row= ({title,fetchUrl,isLargeRow,id})=> {
                         <img
                             key={movie.id}
                             onClick={() => handleClick(movie)}
-                            className={`row__poster ${isLargeRow && "row__posterLarge"}`} 
-                            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
+                            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                            src={`${movie.poster_path}`}
                             loading="lazy"
                             alt={movie.name}/>
                     ))}
-                    
+
                 </div>
                 <div className="slider__arrow-right" ><span className="arrow" onClick={()=>{document.getElementById(id).scrollLeft+=(window.innerWidth-80)}}><ArrowForwardIosIcon/></span></div>
             </div>
